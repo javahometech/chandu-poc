@@ -6,8 +6,8 @@ s3_client = boto3.client("s3")
 
 # TODO remove later
 stage = os.environ["stage"]
-bucket = os.environ["BUCKET"] = "my-task-1"
-key = os.environ["Key"] = "sinu.txt"
+bucket = os.environ["BUCKET"]
+key = os.environ["Key"]
 json_file_name = key.split(".")[0]+".json"
 # TODO remove later
 
@@ -62,6 +62,8 @@ def change_json_parameters():
         f.write(str_emp)
     object_name = os.path.basename(json_file_name)
     response = s3_client.upload_file(object_name, bucket, "stage3/"+json_file_name)
+
+print(os.environ)
 
 if stage == "stage1":
     print("stage1")
